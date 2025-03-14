@@ -10,8 +10,8 @@ namespace Ahorcado
     {
         static void Main(string[] args)
         {
-            Juego juego = new Juego();
-            juego.jugar();
+            Juego ahorcado = new Juego();
+            ahorcado.jugar();
             
         }
     }

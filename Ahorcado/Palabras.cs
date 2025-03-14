@@ -17,6 +17,7 @@ namespace Ahorcado
             "Deporte que se juega entre dos equipos de 11 jugadores con una pelota.",
             "Institución educativa de nivel superior, donde se obtienen grados académicos."
          };
+
         public int generarNumeroRandom()
         {
             Random numero = new Random();
@@ -26,7 +27,7 @@ namespace Ahorcado
         }
         public string escogerPalabra()
         {
-            string palabraElegida = bancodePalabras[generarNumeroRandom()];
+            string palabraElegida = bancodePalabras[generarNumeroRandom()].ToLower();
             
             return palabraElegida;
         }
@@ -36,7 +37,19 @@ namespace Ahorcado
             return descripcionPalabra;
         }
 
+        public string[] palabraElegidaOculta()
+        {
+            string[] palabraAdivinada = new string[escogerPalabra().Length];
+            for (int i = 0; i < escogerPalabra().Length; i++)
+            {
+
+                palabraAdivinada[i] = "_";
+
+            }
+            palabraAdivinada[generarNumeroRandom()] = escogerPalabra()[generarNumeroRandom()].ToString();
+            return palabraAdivinada;
         
+        }
 
 
     }

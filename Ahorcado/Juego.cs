@@ -8,47 +8,44 @@ namespace Ahorcado
 {
     class Juego
     {
-        private Palabras palabra;
+        private Palabras palabra = new Palabras();
         private int intentos;
-
+        private string palabraAadivinar;
+        private string descripcionPalabra;
+        
         public Juego()
         {
-            palabra = new Palabras();
+
+            palabraAadivinar = palabra.escogerPalabra();
+            descripcionPalabra = palabra.descripcion();
             intentos = 3;
         }
 
         
-        public void setIntentos()
+        public void restarIntentos()
         {
             intentos = intentos - 1;
         }
         
-        
-
         public void jugar()
         {
-            string palabraAadivinar = palabra.escogerPalabra().ToLower();
-            string descripcion = palabra.descripcion();
-            string[] palabraAdivinada = new string[palabraAadivinar.Length];
-            
-            Console.WriteLine(descripcion);
-            for (int i = 0; i < palabraAadivinar.Length; i++)
-            {
-                palabraAdivinada[i] = "_";
 
-            }
+            string[] palabraAdivinada = palabra.palabraElegidaOculta();
 
-
-            
+            Console.WriteLine(descripcionPalabra);
             
             while (true)
             {
-                Console.WriteLine("Intentos: " + intentos);
+                Console.WriteLine("Intentos: " + intentos + "\n");
+                
+                Console.WriteLine(string.Join(" ", palabraAdivinada)+ "\n");
                 Console.WriteLine("Letra: ");
-                Console.WriteLine(string.Join(" ", palabraAdivinada));
                 string entrada = Console.ReadLine().ToLower();
+                Console.WriteLine();
+                
                 char letra = entrada[0];
                 bool letraEncontrada = false;
+
                 for (int i = 0; i < palabraAadivinar.Length; i++)
                 {
 
@@ -61,7 +58,7 @@ namespace Ahorcado
                 }
                 if (!letraEncontrada)
                 {
-                    setIntentos();
+                    restarIntentos();
                 }
 
                 if(string.Join("",palabraAdivinada) == palabraAadivinar)
