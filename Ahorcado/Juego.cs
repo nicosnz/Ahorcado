@@ -49,10 +49,11 @@ namespace Ahorcado
                 for (int i = 0; i < palabraAadivinar.Length; i++)
                 {
 
-                    if (palabraAadivinar[i] == letra)
+                    if (palabraAadivinar[i] == letra && palabraAdivinada[i] =="_" )
                     {
-                        palabraAdivinada[i] = entrada;
+                        palabraAdivinada[i] = entrada[0].ToString();
                         letraEncontrada = true;
+                        
                     }
                     
                 }
